@@ -76,6 +76,13 @@
             #contact h1.card-text { font-size: clamp(1.5rem, 7.5vw, 2.5rem); }
             /* Fallback only: if a font is wider than expected, break anywhere rather than overflow */
             #contact h1.contact-email { overflow-wrap: anywhere; }
+
+            /* Phones/tablets: clear the 96px fixed navbar (body only offsets 50px) + ~16px visible gap.
+               max() keeps the original 10% wherever it is already larger (>= ~540px), so 540+ is unchanged. */
+            @media (max-width: 767.98px) {
+              html { scroll-padding-top: 96px; }                     /* anchor jumps land below the navbar */
+              #home { padding-top: max(10%, calc(46px + 0.5rem)); }  /* 46px = 96px navbar - 50px body margin */
+            }
         
         </style>
         
